@@ -54,11 +54,15 @@ class RecipeSearchViewController: NiblessViewController {
             .store(in: &subscriptions)
     }
 }
-
+//MARK: - UITableViewDelegate
 extension RecipeSearchViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        
         let recipe = viewModel.recipe[indexPath.row]
         let recipeDetailVC = recipeDetailViewControllerFactory.makeRecipeDetailViewController(for: recipe)
+        recipeDetailVC.title = recipe.title
         assert(navigationController != nil)
         navigationController?.pushViewController(recipeDetailVC, animated: true)
     }

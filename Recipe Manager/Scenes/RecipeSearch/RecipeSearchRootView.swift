@@ -13,6 +13,7 @@ final class RecipeSearchRootView: NiblessView {
         let view = UITableView(frame: .zero, style: .plain)
         view.dataSource = self
         view.rowHeight = 150
+        
         view.translatesAutoresizingMaskIntoConstraints = false
         view.register(RandomRecipeTableViewCell.self, forCellReuseIdentifier: RandomRecipeTableViewCell.id)
         return view
@@ -44,13 +45,15 @@ final class RecipeSearchRootView: NiblessView {
         layout()
         observeTextField()
         observeViewModel()
+        configureKeyboardDismissGesture()
     }
     
     private func observeTextField() {
         textFieldSubject
             .eraseToAnyPublisher()
+            .removeDuplicates()
             .receive(on: DispatchQueue.main)
-            .debounce(for: .milliseconds(600), scheduler: DispatchQueue.main)
+            .debounce(for: .milliseconds(1500), scheduler: DispatchQueue.main)
             .sink { [weak self] query in
                 guard !query.isEmpty else { return }
                 self?.viewModel.search(recipeBy: query)
@@ -106,8 +109,18 @@ final class RecipeSearchRootView: NiblessView {
         ])
     }
     
+    private func configureKeyboardDismissGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        addGestureRecognizer(tap)
+        tap.cancelsTouchesInView = false
+    }
+    
+    @objc private func dismissKeyboard() {
+        endEditing(true)
+    }
+    
 }
-
+//MARK: - UITableViewDataSource
 extension RecipeSearchRootView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.recipe.count
@@ -120,11 +133,15 @@ extension RecipeSearchRootView: UITableViewDataSource {
         return cell
     }
     
-    
 }
-
+//MARK: - UISearchBarDelegate
 extension RecipeSearchRootView: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         textFieldSubject.send(searchText)
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text, !searchText.isEmpty else { return }
+        textFieldSubject.send(searchText)
+        searchBar.resignFirstResponder()
     }
 }
