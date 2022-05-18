@@ -11,14 +11,14 @@ class RecipeSearchViewModel {
     //MARK: - Properties
     let recipeSearchUseCaseFactory: RecipeSearchUseCaseFactory
     
-    //MARK: - Initializers
+    //MARK: - Initialisers
     init(useCaseFactory: RecipeSearchUseCaseFactory) {
         self.recipeSearchUseCaseFactory = useCaseFactory
     }
         
     @Published var recipe: [RecipeShort] = []
     @Published var errorMessageToPresent: String?
-    @Published var isLoading = false
+    @Published var isLoading = true
     
     func fetchRandomRecipe() {
         let useCase = recipeSearchUseCaseFactory.makeGetRandomRecipeUseCase()

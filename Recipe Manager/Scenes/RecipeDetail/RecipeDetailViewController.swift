@@ -29,7 +29,22 @@ final class RecipeDetailViewController: NiblessViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureInfoButton()
         viewModel.getRecipeInfo()
+    }
+    
+    private func configureInfoButton() {
+        let infoButton = UIBarButtonItem(image: UIImage(systemName: "info.circle"),
+                                         style: .plain, target: self, action: #selector(navigateToNutritionVC))
+        
+        navigationItem.rightBarButtonItem = infoButton
+    }
+    
+    @objc private func navigateToNutritionVC() {
+        guard let nutrients = viewModel.recipeInfo?.nutrients else { return }
+        
+        let vc = NutritionInfoViewController(viewModel: NutritionInfoViewModel(nutrients: nutrients))
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

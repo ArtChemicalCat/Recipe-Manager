@@ -9,11 +9,11 @@ import Combine
 import UIKit
 
 final class RecipeSearchRootView: NiblessView {
+    //MARK: - Views
     lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
         view.dataSource = self
         view.rowHeight = 150
-        
         view.translatesAutoresizingMaskIntoConstraints = false
         view.register(RandomRecipeTableViewCell.self, forCellReuseIdentifier: RandomRecipeTableViewCell.id)
         return view
@@ -38,7 +38,7 @@ final class RecipeSearchRootView: NiblessView {
     private var subscriptions = Set<AnyCancellable>()
     private var textFieldSubject = PassthroughSubject<String, Never>()
     
-    
+    //MARK: - Initialisers
     init(frame: CGRect, viewModel: RecipeSearchViewModel) {
         self.viewModel = viewModel
         super.init(frame: frame)
@@ -48,6 +48,7 @@ final class RecipeSearchRootView: NiblessView {
         configureKeyboardDismissGesture()
     }
     
+    //MARK: - Private
     private func observeTextField() {
         textFieldSubject
             .eraseToAnyPublisher()
@@ -115,6 +116,7 @@ final class RecipeSearchRootView: NiblessView {
         tap.cancelsTouchesInView = false
     }
     
+    //MARK: - Actions
     @objc private func dismissKeyboard() {
         endEditing(true)
     }

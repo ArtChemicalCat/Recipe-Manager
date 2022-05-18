@@ -26,6 +26,7 @@ final class GetRandomRecipeUseCase: UseCase {
                 viewModel.isLoading = false
             } catch {
                 viewModel.errorMessageToPresent = error.localizedDescription
+                print(error)
                 viewModel.isLoading = false
             }
         }

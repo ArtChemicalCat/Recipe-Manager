@@ -80,7 +80,7 @@ final class RecipeDetailRootView: NiblessView {
         let control = UIPageControl()
         control.numberOfPages = 2
         control.backgroundStyle = .prominent
-        control.currentPageIndicatorTintColor = .systemMint
+        control.currentPageIndicatorTintColor = .systemGray
         control.addTarget(self, action: #selector(pageChanged(_:)), for: .valueChanged)
         
         return control

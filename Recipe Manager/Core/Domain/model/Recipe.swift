@@ -14,6 +14,7 @@ struct Recipe {
     let servings: Int
     let readyInMinutes: Int
     let ingredients: [Ingredient]
+    let nutrients: [Nutrient]
 }
 
 struct RecipeShort: Decodable, Equatable {

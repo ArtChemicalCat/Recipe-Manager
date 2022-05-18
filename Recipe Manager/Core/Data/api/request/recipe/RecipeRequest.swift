@@ -37,6 +37,7 @@ enum RecipeRequest: RequestProtocol {
             items["number"] = "5"
             return items
         case .recipeBy:
+            items["includeNutrition"] = "true"
             return items
         case .instructionsForRecipe:
             return items

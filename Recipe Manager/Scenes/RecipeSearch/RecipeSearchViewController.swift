@@ -28,7 +28,7 @@ class RecipeSearchViewController: NiblessViewController {
         super.viewDidLoad()
         observeErrorMessage()
         title = "Search"
-        viewModel.fetchRandomRecipe()
+//        viewModel.fetchRandomRecipe()
         view.backgroundColor = .systemBackground
         rootView.tableView.delegate = self
 }
@@ -58,8 +58,6 @@ class RecipeSearchViewController: NiblessViewController {
 extension RecipeSearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
-        
         let recipe = viewModel.recipe[indexPath.row]
         let recipeDetailVC = recipeDetailViewControllerFactory.makeRecipeDetailViewController(for: recipe)
         recipeDetailVC.title = recipe.title

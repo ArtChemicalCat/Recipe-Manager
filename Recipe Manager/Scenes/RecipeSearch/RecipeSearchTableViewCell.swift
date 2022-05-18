@@ -28,25 +28,26 @@ final class RandomRecipeTableViewCell: UITableViewCell {
     //MARK: - Properties
     var recipe: RecipeShort? {
         didSet {
-            guard let recipe = recipe else {
-                return
-            }
-            titleLabel.text = recipe.title
-            recipeImage.kf.indicatorType = .activity
-            recipeImage.kf.setImage(with: recipe.imageURL)
+            guard let recipe = recipe else { return }
+            updateCell(with: recipe)
         }
     }
-    static var id: String {
-        String(describing: self)
-    }
-    
+    //MARK: - Initialisers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
         layout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Private
+    private func updateCell(with recipe: RecipeShort) {
+        titleLabel.text = recipe.title
+        recipeImage.kf.indicatorType = .activity
+        recipeImage.kf.setImage(with: recipe.imageURL)
     }
     
     private func layout() {
