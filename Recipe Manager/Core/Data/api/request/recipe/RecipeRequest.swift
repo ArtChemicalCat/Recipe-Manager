@@ -8,7 +8,7 @@
 import Foundation
 
 enum RecipeRequest: RequestProtocol {
-    case searchBy(query: String)
+    case searchBy(query: String, cuisine: Cuisine = .none, diet: Diet = .none)
     case randomRecipes
     case recipeBy(id: Int)
     case instructionsForRecipe(id: Int)
@@ -29,12 +29,23 @@ enum RecipeRequest: RequestProtocol {
     var queryItems: [String : String?] {
         var items = ["apiKey": SpoonacularAPIConstants.apiKey]
         switch self {
-        case .searchBy(let query):
-            items["query"] = query
-            items["number"] = "5"
+        case let .searchBy(query, cuisine, diet):
+            if !query.isEmpty {
+                items["query"] = query
+            }
+            
+            if cuisine != .none {
+                items["cuisine"] = cuisine.rawValue
+            }
+            
+            if diet != .none {
+                items["diet"] = diet.rawValue
+            }
+            
+            items["number"] = "15"
             return items
         case .randomRecipes:
-            items["number"] = "5"
+            items["number"] = "10"
             return items
         case .recipeBy:
             items["includeNutrition"] = "true"

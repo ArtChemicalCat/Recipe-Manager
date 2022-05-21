@@ -24,9 +24,8 @@ extension AppDependencyContainer: RecipeSearchUseCaseFactory {
         GetRandomRecipeUseCase(viewModel: recipeSearchViewModel)
     }
     
-    func makeSearchRecipeUseCase(query: String) -> UseCase {
-        SearchRecipeUseCase(viewModel: recipeSearchViewModel,
-                            query: query)
+    func makeSearchRecipeUseCase() -> UseCase {
+        SearchRecipeUseCase(viewModel: recipeSearchViewModel)
     }
 
 }

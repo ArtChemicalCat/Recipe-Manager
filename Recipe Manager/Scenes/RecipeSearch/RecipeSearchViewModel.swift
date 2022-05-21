@@ -18,15 +18,19 @@ class RecipeSearchViewModel {
         
     @Published var recipe: [RecipeShort] = []
     @Published var errorMessageToPresent: String?
-    @Published var isLoading = true
+    @Published var isLoading = false
+    
+    var cuisineType: Cuisine = .none
+    var dietType: Diet = .none
+    var searchQuery = ""
     
     func fetchRandomRecipe() {
         let useCase = recipeSearchUseCaseFactory.makeGetRandomRecipeUseCase()
         useCase.start()
     }
     
-    func search(recipeBy query: String) {
-        let useCase = recipeSearchUseCaseFactory.makeSearchRecipeUseCase(query: query)
+    func search() {
+        let useCase = recipeSearchUseCaseFactory.makeSearchRecipeUseCase()
         useCase.start()
     }
     

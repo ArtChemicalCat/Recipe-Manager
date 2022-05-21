@@ -44,6 +44,7 @@ extension RequestProtocol {
         }
         
         guard let url = components.url else { throw NetworkError.invalidURL }
+        print(url)
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = requestType.rawValue
         

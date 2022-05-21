@@ -26,6 +26,7 @@ class RecipeSearchViewController: NiblessViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureFilterButton()
         observeErrorMessage()
         title = "Search"
 //        viewModel.fetchRandomRecipe()
@@ -53,6 +54,17 @@ class RecipeSearchViewController: NiblessViewController {
             }
             .store(in: &subscriptions)
     }
+    
+    private func configureFilterButton() {
+        let filtersButton = UIBarButtonItem(image: UIImage(systemName: "slider.horizontal.3"), style: .plain, target: self, action: #selector(filtersButtonDidTap))
+        navigationItem.rightBarButtonItem = filtersButton
+    }
+    
+    @objc private func filtersButtonDidTap() {
+        let rootView = view as! RecipeSearchRootView
+        rootView.showOrHideFilters()
+    }
+    
 }
 //MARK: - UITableViewDelegate
 extension RecipeSearchViewController: UITableViewDelegate {

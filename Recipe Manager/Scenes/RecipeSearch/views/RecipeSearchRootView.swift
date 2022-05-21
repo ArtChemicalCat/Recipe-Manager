@@ -33,35 +33,39 @@ final class RecipeSearchRootView: NiblessView {
         return indicator
     }()
     
+    private lazy var filtersView: SearchFiltersView = {
+        let view = SearchFiltersView(frame: .zero, viewModel: viewModel)
+        view.delegate = self
+        return view
+    }()
+    
     //MARK: - Properties
     private let viewModel: RecipeSearchViewModel
     private var subscriptions = Set<AnyCancellable>()
-    private var textFieldSubject = PassthroughSubject<String, Never>()
+    private var isFiltersHide = true
+    
+    private lazy var filtersViewTopConstraint = filtersView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -500)
     
     //MARK: - Initialisers
     init(frame: CGRect, viewModel: RecipeSearchViewModel) {
         self.viewModel = viewModel
         super.init(frame: frame)
         layout()
-        observeTextField()
         observeViewModel()
         configureKeyboardDismissGesture()
     }
     
-    //MARK: - Private
-    private func observeTextField() {
-        textFieldSubject
-            .eraseToAnyPublisher()
-            .removeDuplicates()
-            .receive(on: DispatchQueue.main)
-            .debounce(for: .milliseconds(1500), scheduler: DispatchQueue.main)
-            .sink { [weak self] query in
-                guard !query.isEmpty else { return }
-                self?.viewModel.search(recipeBy: query)
-            }
-            .store(in: &subscriptions)
+    //MARK: - Metods
+    func showOrHideFilters() {
+        UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.9) { [unowned self] in
+            isFiltersHide.toggle()
+            filtersView.alpha = isFiltersHide ? 0 : 1
+            filtersViewTopConstraint.constant = isFiltersHide ? -500 : 8
+            layoutIfNeeded()
+        }
     }
-    
+        
+    //MARK: - Private
     private func observeViewModel() {
         viewModel.$isLoading
             .receive(on: DispatchQueue.main)
@@ -88,7 +92,7 @@ final class RecipeSearchRootView: NiblessView {
     }
     
     private func layout() {
-        [tableView, searchBar, loadingIndicator].forEach {
+        [tableView, searchBar, loadingIndicator, filtersView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             addSubview($0)
         }
@@ -107,6 +111,9 @@ final class RecipeSearchRootView: NiblessView {
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             
+            filtersView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            filtersView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            filtersViewTopConstraint
         ])
     }
     
@@ -139,11 +146,18 @@ extension RecipeSearchRootView: UITableViewDataSource {
 //MARK: - UISearchBarDelegate
 extension RecipeSearchRootView: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        textFieldSubject.send(searchText)
+        viewModel.searchQuery = searchText
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text, !searchText.isEmpty else { return }
-        textFieldSubject.send(searchText)
+        viewModel.searchQuery = searchText
+        viewModel.search()
         searchBar.resignFirstResponder()
+    }
+}
+
+extension RecipeSearchRootView: SearchFiltersViewDelegate {
+    func applyButtonDidTapped() {
+        showOrHideFilters()
     }
 }

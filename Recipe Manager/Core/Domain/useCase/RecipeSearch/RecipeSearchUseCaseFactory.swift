@@ -9,5 +9,5 @@ import Foundation
 
 protocol RecipeSearchUseCaseFactory {
     func makeGetRandomRecipeUseCase() -> UseCase
-    func makeSearchRecipeUseCase(query: String) -> UseCase
+    func makeSearchRecipeUseCase() -> UseCase
 }
