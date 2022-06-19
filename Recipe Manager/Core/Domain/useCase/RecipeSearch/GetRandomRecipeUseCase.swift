@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import PromiseKit
 
 final class GetRandomRecipeUseCase: UseCase {
     let viewModel: RecipeSearchViewModel

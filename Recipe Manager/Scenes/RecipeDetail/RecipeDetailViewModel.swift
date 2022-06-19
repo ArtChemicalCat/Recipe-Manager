@@ -7,24 +7,32 @@
 
 import Foundation
 
+final class RecipeDetailViewActions {
+    let navigateToNutritionInfoView: ([Nutrient]) -> Void
+    
+    init(navigateToNutritionInfoView: @escaping ([Nutrient]) -> Void) {
+        self.navigateToNutritionInfoView = navigateToNutritionInfoView
+    }
+}
+
 final class RecipeDetailViewModel {
     let recipe: RecipeShort
-    let recipeDetailUseCaseFactory: RecipeDetailUseCaseFactory
+    
+    let actions: RecipeDetailViewActions
 
     @Published var instructions: Instructions?
     @Published var recipeInfo: Recipe?
     @Published var isLoading = false
     
-    init(recipe: RecipeShort, recipeDetailUseCaseFactory: RecipeDetailUseCaseFactory) {
+    init(recipe: RecipeShort, actions: RecipeDetailViewActions) {
         self.recipe = recipe
-        self.recipeDetailUseCaseFactory = recipeDetailUseCaseFactory
+        self.actions = actions
     }
     
     func getRecipeInfo() {
-        let useCase = recipeDetailUseCaseFactory.makeRecipeInfoUseCase(id: recipe.id, viewModel: self)
+        let useCase = RecipeInfoUseCase(viewModel: self, recipeID: recipe.id)
         useCase.start()
     }
-    
 }
 
 

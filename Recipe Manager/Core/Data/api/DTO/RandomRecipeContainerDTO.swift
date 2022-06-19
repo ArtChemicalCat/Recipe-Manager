@@ -8,5 +8,5 @@
 import Foundation
 
 struct RandomRecipeContainerDTO: Decodable {
-    let recipes: [RecipeDTO]
+    let recipes: [RecipeShortDTO]
 }

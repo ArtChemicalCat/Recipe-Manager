@@ -5,7 +5,6 @@
 //  Created by Николай Казанин on 17.05.2022.
 //
 
-import Foundation
 import UIKit
 
 final class NutritionItemCell: UITableViewCell {

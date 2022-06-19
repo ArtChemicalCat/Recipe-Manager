@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24029CD12852464A00FD9CE6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24029CD02852464A00FD9CE6 /* Coordinator.swift */; };
+		24029CD32852465E00FD9CE6 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24029CD22852465D00FD9CE6 /* Router.swift */; };
+		24029CD62852469700FD9CE6 /* SceneDelegateRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24029CD52852469700FD9CE6 /* SceneDelegateRouter.swift */; };
+		24029CDA2852481E00FD9CE6 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24029CD92852481E00FD9CE6 /* AppCoordinator.swift */; };
+		24029CDD2852534D00FD9CE6 /* RecipeSearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24029CDC2852534D00FD9CE6 /* RecipeSearchCoordinator.swift */; };
+		24029CDF2852536C00FD9CE6 /* RecipeSearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24029CDE2852536C00FD9CE6 /* RecipeSearchRouter.swift */; };
 		24186762282A9F9D00A5BEC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24186761282A9F9D00A5BEC4 /* AppDelegate.swift */; };
 		24186764282A9F9D00A5BEC4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24186763282A9F9D00A5BEC4 /* SceneDelegate.swift */; };
 		2418676B282A9F9F00A5BEC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2418676A282A9F9F00A5BEC4 /* Assets.xcassets */; };
@@ -21,7 +27,6 @@
 		243A28662834D958006430D3 /* Cuisine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243A28652834D958006430D3 /* Cuisine.swift */; };
 		243A28682834DB0A006430D3 /* Diet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243A28672834DB0A006430D3 /* Diet.swift */; };
 		243A286B2834E796006430D3 /* SearchFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243A286A2834E796006430D3 /* SearchFiltersView.swift */; };
-		243A29002838AFA5006430D3 /* RecipeFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243A28FF2838AFA5006430D3 /* RecipeFiltersViewController.swift */; };
 		246EFEE7282D64BF00265E30 /* RecipeInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EFEE6282D64BF00265E30 /* RecipeInfoUseCase.swift */; };
 		246EFF142830381800265E30 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EFF132830381800265E30 /* Recipe.swift */; };
 		246EFF18283039F400265E30 /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EFF17283039F400265E30 /* RequestProtocol.swift */; };
@@ -50,7 +55,6 @@
 		2497A555282B0AB3003E9BDE /* RecipeSearchRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A554282B0AB3003E9BDE /* RecipeSearchRootView.swift */; };
 		2497A557282B0B85003E9BDE /* NiblessNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A556282B0B85003E9BDE /* NiblessNavigationController.swift */; };
 		2497A55C282B9461003E9BDE /* RecipeSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A55B282B9461003E9BDE /* RecipeSearchTableViewCell.swift */; };
-		2497A55E282B992D003E9BDE /* AppDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A55D282B992D003E9BDE /* AppDependencyContainer.swift */; };
 		24AF802D282BCFAA00B8D5E1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 24AF802C282BCFAA00B8D5E1 /* Kingfisher */; };
 		24AF8031282BD5BB00B8D5E1 /* SearchRecipeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AF8030282BD5BB00B8D5E1 /* SearchRecipeUseCase.swift */; };
 		24AF8035282BF82800B8D5E1 /* RecipeDetailRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AF8034282BF82800B8D5E1 /* RecipeDetailRootView.swift */; };
@@ -60,6 +64,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24029CD02852464A00FD9CE6 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		24029CD22852465D00FD9CE6 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		24029CD52852469700FD9CE6 /* SceneDelegateRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateRouter.swift; sourceTree = "<group>"; };
+		24029CD92852481E00FD9CE6 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		24029CDC2852534D00FD9CE6 /* RecipeSearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchCoordinator.swift; sourceTree = "<group>"; };
+		24029CDE2852536C00FD9CE6 /* RecipeSearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchRouter.swift; sourceTree = "<group>"; };
 		2418675E282A9F9D00A5BEC4 /* Recipe Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recipe Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24186761282A9F9D00A5BEC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24186763282A9F9D00A5BEC4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,7 +86,6 @@
 		243A28652834D958006430D3 /* Cuisine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cuisine.swift; sourceTree = "<group>"; };
 		243A28672834DB0A006430D3 /* Diet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diet.swift; sourceTree = "<group>"; };
 		243A286A2834E796006430D3 /* SearchFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFiltersView.swift; sourceTree = "<group>"; };
-		243A28FF2838AFA5006430D3 /* RecipeFiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeFiltersViewController.swift; sourceTree = "<group>"; };
 		246EFEE6282D64BF00265E30 /* RecipeInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInfoUseCase.swift; sourceTree = "<group>"; };
 		246EFF132830381800265E30 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		246EFF17283039F400265E30 /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
@@ -105,7 +114,6 @@
 		2497A554282B0AB3003E9BDE /* RecipeSearchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchRootView.swift; sourceTree = "<group>"; };
 		2497A556282B0B85003E9BDE /* NiblessNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessNavigationController.swift; sourceTree = "<group>"; };
 		2497A55B282B9461003E9BDE /* RecipeSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchTableViewCell.swift; sourceTree = "<group>"; };
-		2497A55D282B992D003E9BDE /* AppDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencyContainer.swift; sourceTree = "<group>"; };
 		24AF8030282BD5BB00B8D5E1 /* SearchRecipeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecipeUseCase.swift; sourceTree = "<group>"; };
 		24AF8034282BF82800B8D5E1 /* RecipeDetailRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailRootView.swift; sourceTree = "<group>"; };
 		24AF8036282C02D800B8D5E1 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +133,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24029CCF2852462F00FD9CE6 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				24029CE0285257FB00FD9CE6 /* ConcretCoordinators */,
+				24029CD02852464A00FD9CE6 /* Coordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		24029CDB2852530A00FD9CE6 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				24029CE12852581B00FD9CE6 /* ConcretRouters */,
+				24029CD22852465D00FD9CE6 /* Router.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
+		24029CE0285257FB00FD9CE6 /* ConcretCoordinators */ = {
+			isa = PBXGroup;
+			children = (
+				24029CD92852481E00FD9CE6 /* AppCoordinator.swift */,
+				24029CDC2852534D00FD9CE6 /* RecipeSearchCoordinator.swift */,
+			);
+			path = ConcretCoordinators;
+			sourceTree = "<group>";
+		};
+		24029CE12852581B00FD9CE6 /* ConcretRouters */ = {
+			isa = PBXGroup;
+			children = (
+				24029CD52852469700FD9CE6 /* SceneDelegateRouter.swift */,
+				24029CDE2852536C00FD9CE6 /* RecipeSearchRouter.swift */,
+			);
+			path = ConcretRouters;
+			sourceTree = "<group>";
+		};
 		24186755282A9F9D00A5BEC4 = {
 			isa = PBXGroup;
 			children = (
@@ -166,9 +210,9 @@
 		2418677E282AE8D900A5BEC4 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				24A6F69D285FB40B0053A84B /* Navigation */,
 				24186761282A9F9D00A5BEC4 /* AppDelegate.swift */,
 				24186763282A9F9D00A5BEC4 /* SceneDelegate.swift */,
-				2497A55D282B992D003E9BDE /* AppDependencyContainer.swift */,
 				2418676A282A9F9F00A5BEC4 /* Assets.xcassets */,
 				2418676C282A9F9F00A5BEC4 /* LaunchScreen.storyboard */,
 			);
@@ -178,10 +222,9 @@
 		243A285C28342538006430D3 /* NutritionInfo */ = {
 			isa = PBXGroup;
 			children = (
+				24A6F69B2858E56B0053A84B /* vews */,
 				243A285D28342569006430D3 /* NutritionInfoViewController.swift */,
-				243A285F28342598006430D3 /* NutritionInfoRootView.swift */,
 				243A286328342751006430D3 /* NutritionInfoViewModel.swift */,
-				243A2861283425B3006430D3 /* NutritionItemCell.swift */,
 			);
 			path = NutritionInfo;
 			sourceTree = "<group>";
@@ -343,12 +386,37 @@
 			path = NiblessComponents;
 			sourceTree = "<group>";
 		};
+		24A6F69B2858E56B0053A84B /* vews */ = {
+			isa = PBXGroup;
+			children = (
+				243A285F28342598006430D3 /* NutritionInfoRootView.swift */,
+				243A2861283425B3006430D3 /* NutritionItemCell.swift */,
+			);
+			path = vews;
+			sourceTree = "<group>";
+		};
+		24A6F69C2858E57D0053A84B /* views */ = {
+			isa = PBXGroup;
+			children = (
+				24AF8034282BF82800B8D5E1 /* RecipeDetailRootView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		24A6F69D285FB40B0053A84B /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				24029CDB2852530A00FD9CE6 /* Routers */,
+				24029CCF2852462F00FD9CE6 /* Coordinators */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		24AF8032282BF7E200B8D5E1 /* RecipeSearch */ = {
 			isa = PBXGroup;
 			children = (
 				243A28692834E766006430D3 /* views */,
 				2497A54B282B06FA003E9BDE /* RecipeSearchViewController.swift */,
-				243A28FF2838AFA5006430D3 /* RecipeFiltersViewController.swift */,
 				2497A543282B0035003E9BDE /* RecipeSearchViewModel.swift */,
 			);
 			path = RecipeSearch;
@@ -357,8 +425,8 @@
 		24AF8033282BF7EF00B8D5E1 /* RecipeDetail */ = {
 			isa = PBXGroup;
 			children = (
+				24A6F69C2858E57D0053A84B /* views */,
 				24AF8036282C02D800B8D5E1 /* RecipeDetailViewController.swift */,
-				24AF8034282BF82800B8D5E1 /* RecipeDetailRootView.swift */,
 				24AF8038282C033600B8D5E1 /* RecipeDetailViewModel.swift */,
 			);
 			path = RecipeDetail;
@@ -452,9 +520,10 @@
 			files = (
 				243A286B2834E796006430D3 /* SearchFiltersView.swift in Sources */,
 				24AF8035282BF82800B8D5E1 /* RecipeDetailRootView.swift in Sources */,
+				24029CD12852464A00FD9CE6 /* Coordinator.swift in Sources */,
 				243A2862283425B3006430D3 /* NutritionItemCell.swift in Sources */,
 				243A285E28342569006430D3 /* NutritionInfoViewController.swift in Sources */,
-				2497A55E282B992D003E9BDE /* AppDependencyContainer.swift in Sources */,
+				24029CDF2852536C00FD9CE6 /* RecipeSearchRouter.swift in Sources */,
 				243A28662834D958006430D3 /* Cuisine.swift in Sources */,
 				2497A54C282B06FA003E9BDE /* RecipeSearchViewController.swift in Sources */,
 				243A28682834DB0A006430D3 /* Diet.swift in Sources */,
@@ -462,6 +531,7 @@
 				246EFF1F28303C6900265E30 /* NetworkError.swift in Sources */,
 				24186762282A9F9D00A5BEC4 /* AppDelegate.swift in Sources */,
 				246EFF142830381800265E30 /* Recipe.swift in Sources */,
+				24029CDA2852481E00FD9CE6 /* AppCoordinator.swift in Sources */,
 				2497A555282B0AB3003E9BDE /* RecipeSearchRootView.swift in Sources */,
 				243A285728341AE7006430D3 /* UIView+Extensions.swift in Sources */,
 				243A28592834233C006430D3 /* NutrientDTO.swift in Sources */,
@@ -470,11 +540,11 @@
 				246EFF28283040D400265E30 /* APIManager.swift in Sources */,
 				24AF8031282BD5BB00B8D5E1 /* SearchRecipeUseCase.swift in Sources */,
 				2497A553282B093C003E9BDE /* NiblessView.swift in Sources */,
-				243A29002838AFA5006430D3 /* RecipeFiltersViewController.swift in Sources */,
 				243A285B28342429006430D3 /* Nutrient.swift in Sources */,
 				246EFF2428303D4100265E30 /* RecipeRequest.swift in Sources */,
 				243A286428342751006430D3 /* NutritionInfoViewModel.swift in Sources */,
 				2497A551282B0924003E9BDE /* NiblessViewController.swift in Sources */,
+				24029CD62852469700FD9CE6 /* SceneDelegateRouter.swift in Sources */,
 				2497A55C282B9461003E9BDE /* RecipeSearchTableViewCell.swift in Sources */,
 				246EFF2628303FE700265E30 /* RequestManager.swift in Sources */,
 				246EFF3A2830EC4200265E30 /* RecipeSearchUseCaseFactory.swift in Sources */,
@@ -485,11 +555,13 @@
 				24AF8037282C02D800B8D5E1 /* RecipeDetailViewController.swift in Sources */,
 				246EFF3C2830EC8E00265E30 /* Instructions.swift in Sources */,
 				246EFF2B2830DF6C00265E30 /* DataParser.swift in Sources */,
+				24029CDD2852534D00FD9CE6 /* RecipeSearchCoordinator.swift in Sources */,
 				246EFEE7282D64BF00265E30 /* RecipeInfoUseCase.swift in Sources */,
 				246EFF302830E53800265E30 /* SearchResultsDTO.swift in Sources */,
 				246EFF322830E63A00265E30 /* IngredientDTO.swift in Sources */,
 				2497A557282B0B85003E9BDE /* NiblessNavigationController.swift in Sources */,
 				246EFF342830E6CC00265E30 /* RecipeInstructionDTO.swift in Sources */,
+				24029CD32852465E00FD9CE6 /* Router.swift in Sources */,
 				2497A54A282B026F003E9BDE /* GetRandomRecipeUseCase.swift in Sources */,
 				246EFF382830EAE400265E30 /* Ingredient.swift in Sources */,
 				24186764282A9F9D00A5BEC4 /* SceneDelegate.swift in Sources */,

@@ -7,30 +7,41 @@
 
 import Foundation
 
+final class RecipeSearchViewActions {
+    let navigateToRecipeDetailView: (RecipeShort) -> Void
+    
+    init(navigateToRecipeDetailView: @escaping (RecipeShort) -> Void) {
+        self.navigateToRecipeDetailView = navigateToRecipeDetailView
+    }
+}
+
 class RecipeSearchViewModel {
     //MARK: - Properties
-    let recipeSearchUseCaseFactory: RecipeSearchUseCaseFactory
-    
-    //MARK: - Initialisers
-    init(useCaseFactory: RecipeSearchUseCaseFactory) {
-        self.recipeSearchUseCaseFactory = useCaseFactory
-    }
-        
-    @Published var recipe: [RecipeShort] = []
-    @Published var errorMessageToPresent: String?
-    @Published var isLoading = false
     
     var cuisineType: Cuisine = .none
     var dietType: Diet = .none
     var searchQuery = ""
     
+    var actions: RecipeSearchViewActions!
+    
+    //MARK: - Initialisers
+    init(actions: RecipeSearchViewActions) {
+        self.actions = actions
+    }
+    
+    //MARK: - Published
+    @Published var recipe: [RecipeShort] = []
+    @Published var errorMessageToPresent: String?
+    @Published var isLoading = false
+    
+//MARK: - Metods
     func fetchRandomRecipe() {
-        let useCase = recipeSearchUseCaseFactory.makeGetRandomRecipeUseCase()
+        let useCase = GetRandomRecipeUseCase(viewModel: self)
         useCase.start()
     }
     
     func search() {
-        let useCase = recipeSearchUseCaseFactory.makeSearchRecipeUseCase()
+        let useCase = SearchRecipeUseCase(viewModel: self)
         useCase.start()
     }
     

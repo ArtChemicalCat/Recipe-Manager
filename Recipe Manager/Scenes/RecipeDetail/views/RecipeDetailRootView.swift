@@ -151,11 +151,7 @@ final class RecipeDetailRootView: NiblessView {
             }
             .store(in: &subscriptions)
     }
-    
-    override func layoutSubviews() {
         
-    }
-    
     private func layout() {
         [recipeImage, recipeTitle, timeImage, timeLabel, servingImage, servingLabel, pageControl, scrollViewForPageControl, loadingIndicator]
             .forEach {

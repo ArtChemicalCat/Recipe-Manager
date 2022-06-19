@@ -19,7 +19,10 @@ final class SearchRecipeUseCase: UseCase {
         viewModel.isLoading = true
         Task {
             do {
-                let searchResults: SearchResultsDTO = try await requestManager.perform(RecipeRequest.searchBy(query: viewModel.searchQuery, cuisine: viewModel.cuisineType, diet: viewModel.dietType))
+                let searchResults: SearchResultsDTO = try await requestManager
+                    .perform(RecipeRequest.searchBy(query: viewModel.searchQuery,
+                                                    cuisine: viewModel.cuisineType,
+                                                    diet: viewModel.dietType))
                 let recipes = searchResults.results.map { $0.toDomainRecipeShort() }
                 viewModel.recipe = recipes
                 viewModel.isLoading = false

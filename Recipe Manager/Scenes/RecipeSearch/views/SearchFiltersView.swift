@@ -17,16 +17,16 @@ final class SearchFiltersView: NiblessView {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
-        view.addArrangedSubview(cuisineButton)
-        view.addArrangedSubview(dietButton)
-        view.distribution = .fillEqually
-        view.spacing = 30
+        [UIView(), cuisineButton, UIView(), dietButton, UIView()].forEach {
+            view.addArrangedSubview($0)
+        }
+        view.distribution = .equalCentering
         return view
     }()
     
     private lazy var cuisineButton: UIButton = {
         let button = UIButton()
-        var config: UIButton.Configuration = .plain()
+        var config: UIButton.Configuration = .gray()
         config.title = "Cuisine"
         button.configuration = config
         
@@ -36,7 +36,7 @@ final class SearchFiltersView: NiblessView {
     
     private let dietButton: UIButton = {
         let button = UIButton()
-        var config: UIButton.Configuration = .plain()
+        var config: UIButton.Configuration = .gray()
         config.title = "Diet"
         button.configuration = config
         return button
@@ -179,7 +179,9 @@ final class SearchFiltersView: NiblessView {
     }
     
     @objc private func applyFilters() {
-        viewModel.search()
         delegate?.applyButtonDidTapped()
+
+        guard cuisineType != .none || dietType != .none else { return }
+        viewModel.search()
     }
 }

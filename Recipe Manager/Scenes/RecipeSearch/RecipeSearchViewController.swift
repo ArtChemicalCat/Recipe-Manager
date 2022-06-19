@@ -10,29 +10,28 @@ import Combine
 
 class RecipeSearchViewController: NiblessViewController {
     //MARK: - Properties
-    private let recipeDetailViewControllerFactory: RecipeDetailViewControllerFactory
     private let viewModel: RecipeSearchViewModel
     private var subscriptions = Set<AnyCancellable>()
     
     var rootView: RecipeSearchRootView {
         view as! RecipeSearchRootView
     }
-    
-    init(viewModel: RecipeSearchViewModel, recipeDetailViewControllerFactory: RecipeDetailViewControllerFactory) {
+    //MARK: - Initialiser
+    init(viewModel: RecipeSearchViewModel) {
         self.viewModel = viewModel
-        self.recipeDetailViewControllerFactory = recipeDetailViewControllerFactory
         super.init()
     }
     
+    //MARK: - Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         configureFilterButton()
         observeErrorMessage()
         title = "Search"
-//        viewModel.fetchRandomRecipe()
         view.backgroundColor = .systemBackground
+        viewModel.fetchRandomRecipe()
         rootView.tableView.delegate = self
-}
+    }
     
     override func loadView() {
         view = RecipeSearchRootView(frame: UIScreen.main.bounds, viewModel: viewModel)
@@ -71,9 +70,6 @@ extension RecipeSearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let recipe = viewModel.recipe[indexPath.row]
-        let recipeDetailVC = recipeDetailViewControllerFactory.makeRecipeDetailViewController(for: recipe)
-        recipeDetailVC.title = recipe.title
-        assert(navigationController != nil)
-        navigationController?.pushViewController(recipeDetailVC, animated: true)
+        viewModel.actions.navigateToRecipeDetailView(recipe)
     }
 }

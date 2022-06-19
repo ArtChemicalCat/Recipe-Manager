@@ -10,15 +10,14 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    let appDependencyContainer = AppDependencyContainer()
+    private lazy var mainRouter = SceneDelegateRouter(window: window!)
+    private lazy var mainCoordinator = MainCoordinator(router: mainRouter)
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        let vc = UINavigationController(rootViewController: appDependencyContainer.makeRecipeSearchViewController())
-        window.rootViewController = vc
         self.window = window
-        window.makeKeyAndVisible()
+        mainCoordinator.present(animated: false, onDismissed: nil)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

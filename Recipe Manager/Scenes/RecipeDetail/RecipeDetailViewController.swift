@@ -5,7 +5,6 @@
 //  Created by Николай Казанин on 11.05.2022.
 //
 
-import Foundation
 import Combine
 import UIKit
 
@@ -43,12 +42,6 @@ final class RecipeDetailViewController: NiblessViewController {
     @objc private func navigateToNutritionVC() {
         guard let nutrients = viewModel.recipeInfo?.nutrients else { return }
         
-        let vc = NutritionInfoViewController(viewModel: NutritionInfoViewModel(nutrients: nutrients))
-        navigationController?.pushViewController(vc, animated: true)
+        viewModel.actions.navigateToNutritionInfoView(nutrients)
     }
-    
-}
-
-protocol RecipeDetailViewControllerFactory {
-    func makeRecipeDetailViewController(for recipe: RecipeShort) -> RecipeDetailViewController
 }

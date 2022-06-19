@@ -30,3 +30,14 @@ struct RecipeDTO: Decodable {
         return RecipeShort(id: id, title: title, imageURL: image)
     }
 }
+
+struct RecipeShortDTO: Decodable {
+    let id: Int
+    let title: String
+    let image: URL
+    let calories: Int?
+    
+    func toDomainRecipeShort() -> RecipeShort {
+        return RecipeShort(id: id, title: title, imageURL: image)
+    }
+}
