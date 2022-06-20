@@ -8,25 +8,23 @@
 import Foundation
 
 final class GetRandomRecipeUseCase: UseCase {
-    let viewModel: RecipeSearchViewModel
     let requestManager: RequestManagerProtocol = RequestManager()
-        
-    init(viewModel: RecipeSearchViewModel) {
-        self.viewModel = viewModel
+    private let completionBlock: (Result<[RecipeShort], Error>) -> Void
+    
+    init(completion: @escaping (Result<[RecipeShort], Error>) -> Void) {
+        self.completionBlock = completion
     }
     
     func start() {
-        viewModel.isLoading = true
+        
         Task {
             do {
                 let recipeContainer: RandomRecipeContainerDTO = try await requestManager.perform(RecipeRequest.randomRecipes)
                 let recipes = recipeContainer.recipes.map { $0.toDomainRecipeShort() }
-                viewModel.recipe = recipes
-                viewModel.isLoading = false
+                completionBlock(.success(recipes))
             } catch {
-                viewModel.errorMessageToPresent = error.localizedDescription
                 print(error)
-                viewModel.isLoading = false
+                completionBlock(.failure(error))
             }
         }
     }

@@ -30,7 +30,18 @@ final class RecipeDetailViewModel {
     }
     
     func getRecipeInfo() {
-        let useCase = RecipeInfoUseCase(viewModel: self, recipeID: recipe.id)
+        let useCase = RecipeInfoUseCase(recipeID: recipe.id) { [weak self] recipe, instructions in
+            guard let self = self else { return }
+            
+            defer {
+                self.isLoading = false
+            }
+        
+            self.recipeInfo = recipe
+            self.instructions = instructions
+        }
+        
+        isLoading = true
         useCase.start()
     }
 }

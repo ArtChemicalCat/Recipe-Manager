@@ -36,13 +36,27 @@ class RecipeSearchViewModel {
     
 //MARK: - Metods
     func fetchRandomRecipe() {
-        let useCase = GetRandomRecipeUseCase(viewModel: self)
+        let useCase = GetRandomRecipeUseCase(completion: handleApiResponse(result:))
         useCase.start()
+        isLoading = true
     }
     
     func search() {
-        let useCase = SearchRecipeUseCase(viewModel: self)
+        let request: RecipeRequest = .searchBy(query: searchQuery, cuisine: cuisineType, diet: dietType)
+        let useCase = SearchRecipeUseCase(request: request, completion: handleApiResponse(result:))
         useCase.start()
+        isLoading = true
+    }
+    
+    private func handleApiResponse(result: Result<[RecipeShort], Error>) {
+        defer { isLoading = false }
+        
+        switch result {
+        case .success(let recipes):
+            self.recipe = recipes
+        case .failure(let error):
+            errorMessageToPresent = error.localizedDescription
+        }
     }
     
 }

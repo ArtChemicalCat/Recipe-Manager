@@ -8,27 +8,24 @@
 import Foundation
 
 final class SearchRecipeUseCase: UseCase {
-    let viewModel: RecipeSearchViewModel
     let requestManager: RequestManagerProtocol = RequestManager()
+    private let completionBlock: (Result<[RecipeShort], Error>) -> Void
+    private let request: RequestProtocol
     
-    init(viewModel: RecipeSearchViewModel) {
-        self.viewModel = viewModel
+    init(request: RequestProtocol, completion: @escaping (Result<[RecipeShort], Error>) -> Void) {
+        completionBlock = completion
+        self.request = request
     }
         
     func start() {
-        viewModel.isLoading = true
         Task {
             do {
                 let searchResults: SearchResultsDTO = try await requestManager
-                    .perform(RecipeRequest.searchBy(query: viewModel.searchQuery,
-                                                    cuisine: viewModel.cuisineType,
-                                                    diet: viewModel.dietType))
+                    .perform(request)
                 let recipes = searchResults.results.map { $0.toDomainRecipeShort() }
-                viewModel.recipe = recipes
-                viewModel.isLoading = false
+                completionBlock(.success(recipes))
             } catch {
-                viewModel.errorMessageToPresent = error.localizedDescription
-                viewModel.isLoading = false
+                completionBlock(.failure(error))
             }
         }
     }
